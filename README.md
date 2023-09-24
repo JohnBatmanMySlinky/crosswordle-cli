@@ -21,3 +21,4 @@ python main.py
 - make yellow look ups better
 - formatt game board better (like turn wise)
 - give errors why input is bad
+- make all lower
