@@ -1,0 +1,2 @@
+# crosswordle-cli
+Crosswordle
