@@ -18,3 +18,6 @@ python main.py
 - make sure words infact overlap
 - display # of letters somewhere
 - include dictionary look up
+- make yellow look ups better
+- formatt game board better (like turn wise)
+- give errors why input is bad
