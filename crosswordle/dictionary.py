@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+import os
 
 @dataclass
 class WordPair:
@@ -8,6 +9,8 @@ class WordPair:
     index_b: int
 
 def build_dictionary(max_grid_size: int = 10) -> list[WordPair]:
+    if os.fi
+
     with open("word_list.txt") as f:
         raw_data = f.readlines()
 
