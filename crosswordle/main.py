@@ -25,9 +25,10 @@ def run():
         guess_a = input()
         print(f"Input guess {board.number_guesses+1} word 2...")
         guess_b = input()
-        exit_code = board.make_a_guess(guess_a, guess_b)
+        exit_code, error_msg = board.make_a_guess(guess_a, guess_b)
         if exit_code == -1:
-            print("[bold red]bad inputs, try again")
+            os.system('cls||clear')
+            print(f"[bold red]bad inputs, \n{error_msg}\ntry again")
         elif exit_code == 1:
             print(f"[bold red]WINNER WINNER[/bold red] [bold yellow]CHEECKEN[/bold yellow] DINNER.\n[bold italic green] You solved the puzzle in {board.number_guesses} guesses!")
             print(board)

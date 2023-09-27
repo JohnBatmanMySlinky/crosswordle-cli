@@ -14,12 +14,12 @@ class Board:
         self._build_board()
         self._build_header()
 
-    def make_a_guess(self, guess_a: str, guess_b: str) -> int:
+    def make_a_guess(self, guess_a: str, guess_b: str) -> tuple:
         # first validate input
-        validation_check = self._validate_guess(guess_a, guess_b)
+        validation_check, error_msg = self._validate_guess(guess_a, guess_b)
         if validation_check == False:
             # if we dont pass validation, exit early with a -1
-            return -1
+            return -1, error_msg
         
         # we have passed validation, continuing
         self.number_guesses += 1
@@ -30,10 +30,10 @@ class Board:
         # if we have a winner, exit early with a 1
         winner_check = self._check_for_winner(guess_a, guess_b)
         if winner_check == True:
-            return 1
+            return 1, ""
         
         # else, continue
-        return 0
+        return 0, ""
 
     def _analyze_guess(self, guess_a: str, guess_b: str) -> dict:
         # store a list of formatted strings
@@ -75,15 +75,23 @@ class Board:
             return False
 
     def _validate_guess(self, guess_a: str, guess_b: str) -> None:
-        if not guess_a.isalpha():
-            return False
-        if not guess_b.isalpha():
-            return False
-        if not len(guess_a) == len(self.the_word.word_a):
-            return False
-        if not len(guess_b) == len(self.the_word.word_b):
-            return False
-        return True
+        problems = []
+        check = True
+        for i, (guess, truth) in enumerate(zip([guess_a, guess_b], [self.the_word.word_a, self.the_word.word_b])):
+            if not guess.isalpha():
+                problems.append(f"   -symbols in guess {i+1}")
+                check = False
+
+            if not len(guess) == len(truth):
+                problems.append(f"   -guess {i+1} is the wrong length")
+                check = False
+        
+        if problems:
+            error_msg = "\n".join(problems)
+        else:
+            error_msg = ""
+
+        return check, error_msg
 
     def _update_header(self, analyzed_guess: dict) -> None:
         # take strings for analyzed guess and concat into a single string
