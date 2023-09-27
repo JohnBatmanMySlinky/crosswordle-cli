@@ -22,9 +22,9 @@ def run():
     while True:
         print(board)
         print(f"Input guess {board.number_guesses+1} word 1...")
-        guess_a = input()
+        guess_a = input().lower()
         print(f"Input guess {board.number_guesses+1} word 2...")
-        guess_b = input()
+        guess_b = input().lower()
         exit_code, error_msg = board.make_a_guess(guess_a, guess_b)
         if exit_code == -1:
             os.system('cls||clear')

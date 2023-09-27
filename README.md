@@ -15,9 +15,6 @@ python main.py
 
 # TODO
 - how do you know which word is 1 & which is 2???
-- make sure words infact overlap
 - display # of letters somewhere
 - include dictionary look up
 - make yellow look ups better
-- give errors why input is bad
-- make all lower

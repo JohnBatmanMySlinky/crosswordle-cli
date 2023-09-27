@@ -77,6 +77,8 @@ class Board:
     def _validate_guess(self, guess_a: str, guess_b: str) -> None:
         problems = []
         check = True
+
+        # checks that apply to both guesses equally
         for i, (guess, truth) in enumerate(zip([guess_a, guess_b], [self.the_word.word_a, self.the_word.word_b])):
             if not guess.isalpha():
                 problems.append(f"   -symbols in guess {i+1}")
@@ -85,13 +87,13 @@ class Board:
             if not len(guess) == len(truth):
                 problems.append(f"   -guess {i+1} is the wrong length")
                 check = False
-        
-        if problems:
-            error_msg = "\n".join(problems)
-        else:
-            error_msg = ""
 
-        return check, error_msg
+        # additional check to enforce that overlapping letter is the same!!!
+        if guess_a[self.the_word.index_a] != guess_b[self.the_word.index_b]:
+            check = False
+            problems.append("   -overlapping letter must be the same in both guesses")
+        
+        return check, "\n".join(problems)
 
     def _update_header(self, analyzed_guess: dict) -> None:
         # take strings for analyzed guess and concat into a single string
