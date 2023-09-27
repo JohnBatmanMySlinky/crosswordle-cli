@@ -5,7 +5,7 @@ A very simple cli implementation of [crosswordle](https://crosswordle.serializer
 You'll probably want to add to `crosswordle/word_list.txt`...
 
 # Use
-```{python}
+```python
 python -m venv env
 source env/bin/activate
 pip install -r requirements.txt
@@ -19,6 +19,5 @@ python main.py
 - display # of letters somewhere
 - include dictionary look up
 - make yellow look ups better
-- formatt game board better (like turn wise)
 - give errors why input is bad
 - make all lower

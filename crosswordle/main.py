@@ -1,3 +1,4 @@
+import os
 from rich import print
 from random import randrange, seed
 from dictionary import build_dictionary
@@ -32,6 +33,7 @@ def run():
             print(board)
             return True
         elif exit_code == 0:
+            os.system('cls||clear')
             continue
         else:
             assert False, "SOMETHING BAD HAPPENED"
